@@ -1,6 +1,12 @@
-import { BsSearch } from 'react-icons/bs';
+type SearchProps = {
+	loadUser: (userName: string) => Promise<void>;
+};
 
-export function Search() {
+import { BsSearch } from 'react-icons/bs';
+import { useState } from 'react';
+
+export function Search({ loadUser }: SearchProps) {
+	const [userName, setUserName] = useState<string>('');
 	return (
 		<>
 			<h2>Busque por nome do usuário: </h2>
@@ -11,8 +17,11 @@ export function Search() {
 					name="name"
 					id="name"
 					placeholder="Digite o nome do usuário"
+					onChange={(e) => {
+						setUserName(e.target.value);
+					}}
 				/>
-				<button>
+				<button onClick={() => loadUser(userName)}>
 					<BsSearch />
 				</button>
 			</div>
