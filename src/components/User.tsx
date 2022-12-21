@@ -28,7 +28,12 @@ export function User({
 					<p className={classes.number}>{following}</p>
 				</div>
 			</div>
-			<Link to={`/repos/${login}`}>Ver melhores projetos</Link>
+			<a
+				href={`https://github.com/${login}?tab=repositories`}
+				target="_blank"
+			>
+				Ver repositórios
+			</a>
 		</div>
 	);
 }
